@@ -1,0 +1,46 @@
+#include <iostream>
+
+int main() {
+
+  double earth;
+  int number;
+  double mercury = 0.38;
+  double venus = 0.91;
+  double mars = 0.38;
+  double jupiter = 2.34;
+  double saturn = 1.06;
+  double uranus = 0.92;
+  double neptune = 1.19;
+  double final;
+
+
+  std::cout << "What is your earth-weight in kilograms?\n";
+  std::cin >> earth;
+
+  std::cout << "What planet do you plan on fighting?\n Mercury - 1\n Venus - 2\n Mars - 3\n Jupiter - 4\n Saturn - 5\n Uranus - 6\n Neptune - 7\n";
+  std::cin >> number;
+
+  if (number == 1) {
+    final = earth * mercury;
+    std::cout << "Your weight on Mercury equals to " << final << " kilograms.\n";
+  } else if (number == 2) {
+    final = earth * venus;
+    std::cout << "Your weight on Venus equals to " << final << " kilograms.\n";
+  } else if (number == 3) {
+    final = earth * mars;
+    std::cout << "Your weight on Mars equals to " << final << " kilograms.\n";
+  } else if (number == 4) {
+    final = earth * jupiter;
+    std::cout << "Your weight on Jupiter equals to " << final << " kilograms.\n";
+  } else if (number == 5) {
+    final = earth * saturn;
+    std::cout << "Your weight on Saturn equals to " << final << " kilograms.\n";
+  } else if (number == 6) {
+    final = earth * uranus;
+    std::cout << "Your weight on Uranus equals to " << final << " kilograms.\n";
+  } else if (number == 7) {
+    final = earth * neptune;
+    std::cout << "Your weight on Neptune equals to " << final << " kilograms.\n";
+  } else {
+    std::cout << "You have entered a wrong number, this planet isn't registered in our system.\n";
+  }
