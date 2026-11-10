@@ -44,3 +44,4 @@ int main() {
   } else {
     std::cout << "You have entered a wrong number, this planet isn't registered in our system.\n";
   }
+}
