@@ -1,0 +1,17 @@
+#include <iostream>
+
+int main() {
+  
+  int year;
+  std::cout << "Please enter the year you'd like to check for being a leap year after the year 1000!\n";
+  std::cin >> year;
+
+  if (year >= 1000 && (year % 4 == 0)) {
+    std::cout << "It's a leap year!\n";
+  } else if (year < 1000) {
+    std::cout << "The year you've entered isn't over 1000 years! Please restart the checking program.\n";
+  } 
+  else {
+    std::cout << "It'not a leap year...\n";
+  }
+}
