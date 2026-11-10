@@ -1,0 +1,103 @@
+#include <iostream>
+
+int main() {
+
+  int gryffindor = 0;
+  int hufflepuff = 0;
+  int ravenclaw = 0;
+  int slytherin = 0;
+
+  int answer1;
+  int answer2;
+  int answer3;
+  int answer4;
+
+  std::cout << "\nYou, Muggle, have now started the sorting Quiz!\n";
+
+  std::cout << "\nQ1) When I'm dead, I want people to remember me as:\n";
+  std::cout << "\n1) The Good\n" << "2) The Great\n" << "3) The Wise\n" << "4) The Bold\n";
+  std::cin >> answer1;
+
+  if (answer1 == 1) {
+    hufflepuff = hufflepuff + 1;
+  } else if (answer1 == 2) {
+    slytherin = slytherin + 1;
+  } else if (answer1 == 3) {
+    ravenclaw = ravenclaw + 1;
+  } else if (answer1 == 4) {
+    gryffindor = gryffindor + 1;
+  } else {
+    std::cout << "Invalid input.\n";
+  }
+
+  std::cout << "\nQ2) Dawn or Dusk?\n";
+  std::cout << "\n1)Dawn\n" << "2)Dusk\n";
+  std::cin >> answer2;
+    if (answer2 == 1) {
+      gryffindor = gryffindor + 1;
+      ravenclaw = ravenclaw + 1;
+    } else if (answer2 == 2) {
+      hufflepuff = hufflepuff + 1;
+      slytherin = slytherin + 1;
+    } else {
+      std::cout << "Invalid input.\n";
+    }
+
+    std::cout << "\nQ3) Which kind of instrument most pleases your ear?\n";
+    std::cout << "\n1) The violin\n" << "2) The trumpet\n" << "3) The piano\n" << "4) The drum\n";
+    std::cin >> answer3;
+
+    if (answer3 == 1) {
+      slytherin = slytherin + 1;
+    } else if (answer3 == 2) {
+      hufflepuff = hufflepuff + 1;
+    } else if (answer3 == 3) {
+      ravenclaw = ravenclaw + 1;
+    } else if (answer3 == 4) {
+      gryffindor = gryffindor + 1;
+    } else {
+      std::cout << "Invalid input.\n";
+    }
+
+    std::cout << "\nQ4) Which road tempts you most?\n";
+    std::cout << "\n1) The wide, sunny glassy lane\n" << "2) The narrow, dark, lantern-lit alley\n" << "3) The twisting, leaf-strewn path through woods\n" << "4) The cobbled street lined (ancient buildings)\n";
+    std::cin >> answer4;
+
+    if (answer4 == 1) {
+      hufflepuff = hufflepuff + 1;
+    } else if (answer4 == 2) {
+      slytherin = slytherin + 1;
+    } else if (answer4 == 3) {
+      gryffindor = gryffindor + 1;
+    } else if (answer4 == 4) {
+      ravenclaw = ravenclaw + 1;
+    } else {
+      std::cout << "Invalid input.\n";
+    }
+
+    int max = 0;
+    std::string house;
+
+    if (gryffindor > max) {
+      max = gryffindor;
+      house = "The house you're assigned to is Gryffindor's House!\n";
+    }
+    if (hufflepuff > max) {
+      max = hufflepuff;
+      house = "The house you're assigned to is Hufflepuff's House!\n";
+    }
+    if (ravenclaw > max) {
+      max = ravenclaw;
+      house = "The house you're assigned to is Ravenclaw's House!\n";
+    }
+    if (slytherin > max) {
+      max = slytherin;
+      house = "The house you're assigned to is Slytherin's House!\n";
+    }
+
+    if (house.empty()) {
+      std::cout << "\nAll your answers were invalid, sadly, we can't tell you where you'd fit in best.\n";
+    } else {
+      std::cout << "\n" << house;
+    }
+}
