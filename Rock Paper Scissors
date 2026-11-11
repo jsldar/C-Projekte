@@ -1,0 +1,50 @@
+#include <iostream>
+#include <stdlib.h>
+#include <ctime>
+
+int main() {
+ /* 
+ This is the rock paper scissors game.
+ */
+
+ srand(time(NULL));
+
+ int computer = rand() % 3 + 1;
+
+ int user = 0;
+
+ std::cout << "\nRock, Paper, Scissors!\n\n";
+ std::cout << "1) Rock\n" << "2) Paper\n" << "3) Scissors\n\n";
+ std::cin >> user;
+  if (user > 3 || user < 1) {
+  std::cout << "Invalid input!\n";
+  return 0;
+ }
+ std::cout << "\nShoot!\n\n";
+
+ if (computer == 1) {
+  std::cout << "The computer chose Rock. ";
+ } else if (computer == 2) {
+  std::cout << "The computer chose Paper. ";
+ } else if (computer == 3) {
+  std::cout << "The computer chose Scissors. ";
+ }
+
+ if (user == computer) {
+  std::cout << "It's a tie!\n";
+ } else if (user == 1 && computer == 3) {
+  std::cout << "You won!\n";
+ } else if (user == 1 && computer == 2) {
+  std::cout << "You lost...\n";
+ } else if (user == 2 && computer == 1) {
+  std::cout << "You won!\n";
+ } else if (user == 2 && computer == 3) {
+  std::cout << "You lost...\n";
+ } else if (user == 3 && computer == 1) {
+  std::cout << "You lost...\n";
+ } else if (user == 3 && computer == 2) {
+  std::cout << "You won!\n";
+ } else {
+  std::cout << "BUG.\n";
+ }
+}
