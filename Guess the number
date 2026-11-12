@@ -1,0 +1,32 @@
+#include <iostream>
+
+int main() {
+
+  int guess;
+  
+  int tries = 0;
+
+  std::cout << "I'm thinking of a number 1-10.\n";
+  std::cout << "Guess it!: ";
+  std::cin >> guess;
+ 
+  // Write a while loop here:
+
+  while (guess != 8 && tries < 50 && guess < 11 && guess > 0) {
+    std::cout << "Wrong guess, try again!: ";
+    std::cin >> guess;
+    tries++;
+  }
+  
+  if (guess < 0 || guess > 10) {
+    std::cout << "You have typed in a number out of the guessing range.\nPlease guess one 1-10.\n";
+    return 0;
+  }
+  
+  if (guess == 8) {
+    
+    std::cout << "\nYou got it!\n";
+    std::cout << "But, for you to guess, you had to try " << tries << " times...\n";
+  }  
+  
+}
