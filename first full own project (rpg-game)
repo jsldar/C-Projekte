@@ -1,0 +1,426 @@
+#include <iostream>
+#include <stdlib.h>
+#include <ctime>
+
+int main() {
+
+  // variables
+  std::string playername;
+  std::string playerclass;
+  std::string intro1 = "\nOh, you're a  ";
+  std::string intro2 = "That's a relief! You are just the person we could have begged the gods for!";
+  int forswitch;
+  std::string playerchoice;
+  std::string second1 = "\nOur town is in need of someone just like you! ";
+
+  std::string second2 = "\nYou couldn't ever know how grateful we are for your will to help out the ones in need."
+                        "\nI will let the king know that now we have a chance in winning this battle, if you should be the one deciding piece for our victory," 
+                        "\nyou will be rewarded greatly! But first, I've got to ask you. What level of mastery are you?\n";
+
+  std::string second3 = "\nThat's a very sad thing to hear. But I understand, really, noone would ever jusge you for caring about your life."
+                        "\nBut, with this, I think you should go. As I told you before, we have a war going on, residents are at risk just as the knights fighting for the resident's lives.\n\n"
+                        "\n-Like the guard advised you, you exit the town. You walk and walk, until you find another city. They happily accept you. "
+                        "\nYou hone your skills, and, it seems like you are very talented. So talented, that you become a literal legend. "
+                        "\nAfter around 3 years of living there you visit an inn, where you wish to become an Ultimate." 
+                        "\nYour wish for it is as pure as tears of an angel and the gods of the world grant you your wish." 
+                        "\nBut, sadly for you, it's a city that is rotten to it's core." 
+                        "\nThe mafia rules there, and since you discovered it only years later after coming there, you've already peaked their interest even before" 
+                        "\nreaching the rank that is said to be unacquintable. After reaching Ultimate, you were happy, but it didn't even last a day, till it has become your curse." 
+                        "\nThe mafia threatens your newly built family, which you value more than yourself, so, for them to not get hurt you turn yourself into their slave. "
+                        "\nYears after you have been captured you hear the guards whisper, they talk about the city that fell to their enemies after the war that lasted years." 
+                        "\nIt is the city, you fled from, and now you can only wonder wether you made the right decision back then...-\n\nWith this, your story ends.";
+
+  std::string second4 = "\nI couldn't quite hear you, our people are quite loud in times as these... could you tell me what rank you are again, please?\n";
+
+  int tries = 0;
+  int tries1 = 0;
+  std::string rank = "\nAs you know, there are 4 different skill ranks, that you get assigned by the so-called System in our world." 
+                    "\nThe Beginner rank, if you've only started your journey on your path." 
+                    "\nThe Intermidiate rank, if you have finished school that teaches you the basics and gives you enough excercise to better your skills," 
+                    "\nor maybe you're just talented from birth. The Expert rank, only very, very skilled people who have been through water and fire on their journey" 
+                    "\nof mastering what they devote themselves to, have achieved this rank. There is also a legend, or more like a tale, that there was a person with the Ultimate rank." 
+                    "\nI've never believed in it, but still, if there is a person with such a rank...\nSo, tell me, please, what rank are you?\n";
+
+  std::string playerrank;
+  std::string sadend = "Please, tell me in a way I ca... "
+                        "\n\n*BOOM*\n\n "
+                        "\n-right before your eyes, the guard gets obliterated into pieces. "
+                        "\nYou fall into the pits of panic and fear, you flee. You wake up in a cave, somewhere in the forest, it seems. "
+                        "\nYou begin to recover your senses, but the thought of returning to the city makes you feel animalistic fear. "
+                        "\nYears pass by, but you couldn't ever return to the city. If only you wouldn't have taken so long answering the guards question...-\n\nThat's the end of your story.";
+  std::string beginner = "Oh, so you're just a beginner... Don't worry, it's not about your rank, thank you very much for willing to help us in such times.\n"
+                         "If it shouldn't go all that well, we won't judge you. There also won't be any punishment, so don't worry about it neither.\n\n";
+  std::string intermidiate = "Hm, so you're an intermidiate, you say. That's a really good achievement, you know? Thank you very much for your readiness to help us.\n"
+                             "I will clue you in on the details on our way, let's go!";
+  std::string expert = "\nWhat?.. yo.. you're an expert you said? It must be god's will such a person like yourself decided to talk into our town while being in such need of your help.\n"
+                       "I can't believe it.. please, come with me, I will gather all authorities to give you a proper welcome, they will also tell you everything you'd like to know.\n\n";
+  std::string ultimate = "Stop joking now. Like I sai-\n\n"
+                         "You show the guard your status card.\n\n"
+                         "I-i.. it can't be!!\n\n"
+                         "He ran off.\n\n"
+                         "5.. no, 10 minutes passed by, until he came out flying out of the door.\n"
+                         "I-I am so, so sorry for making you wait!! Please forgive me!\n"
+                         "He bows his head, and steps to the side from the door. The town's ruler goes out of his own town to greet you. He falls to the ground, bows before you and begs you to help them.\n"
+                         "Of course, you don't need such acknowledgment. You have sacrificed a lot, maybe a bit too much to reach this level of greatness, but now, you will be able to put it to good cause.\n\n";
+
+  std::string deal = "-You deliver the relics to the destined place, all you've got to do is wait and pray your skills won't fail you. You never believed in god,\n"
+                     "but if now's not the time, then when will it be? You beg in your mind for a successful result, as the buyer approaches you.-\n"
+                     "Hey there! Let's make this deal happen, shall we? - He looks smug, but it's not the first time you make a deal. You trust in yourself, and in your abilities to get the best price.-\n";
+
+  std::string baddeal = "-You return to the town, lucky you. Not getting killed on both the way to the buyer nor on the way back to town alone is worth praise.-\n\n"
+                        "You made it!\n\nThe guard stands by the doors, sheddign tears like a kid.\n\nI knew you'd make it! Let's get you safely to our town's bank, did you get a good deal?\n\n"
+                        "You are confident. You've tried your best. You put two bags of gold coins on the table at the bank, telling the bank-teller how your deal went.\n\n"
+                        "But while you're telling him your story, you notice his vision being fixed on the bags.\n\n"
+                        "Is that all you got from it?\n\n"
+                        "Yes.. Sir.\n\n"
+                        "I see. Well, we will definitely put this money to use, don't you worry!\n\n"
+                        "Even though he didn't curse you, you felt the dissapoinment in the room. You stay in the town, years and years you continue contributing for the town's sake.\n"
+                        "You completely devote yourself to your job, even climb up a rank. But, sadly, the town just doesn't posses anything life-changing anymore. After 12 years of living,\n"
+                        "You flee the town. It falls. Nobody haunts you, nobody judges, only yourself. If only you made that deal back then happen, if only you could have been a better salesman back then.\n"
+                        "Many people adore you, even more people are envious of you for your skills. You are a legend now. Nobody but you made it to Ultimate, in their lifetime. But you are miserable,\n"
+                        "You couldn't make the one deal that really mattered and nothing could change it. You die a legend, a legend that didn't ever find happinness.";
+
+  std::string gooddeal = "-You return to the town, lucky you. Not getting killed on both the way to the buyer nor on the way back to town alone is worth praise.-\n\n"
+                        "You made it!\n\nThe guard stands by the doors, shedding tears like a kid.\n\nI knew you'd make it! Let's get you safely to our town's bank, did you get a good deal?\n\n"
+                        "You are confident. You've tried your best. You put two bags of gold coins on the table at the bank, telling the bank-teller how your deal went.\n\n"
+                        "But while you're telling him your story, you notice his vision being fixed on the bags.\n\n"
+                        "Is that all you got from it?\n\n"
+                        "No, why would you ever think that, Sir?\nTake a look out the window!\n\n"
+                        "The teller looks out and falls to the floor. Nobody could have ever thought you'd actually pull off a deal like that. The teller is fine, but still in shock after days in the hospital.\n"
+                        "The town's rulers greatly award you. You live happily, under the danger of being overrun by enemies, but not for long. With the money you've made for the town the army has pushed the enemies so far back,\n"
+                        "they couldn't refuse the peace offer the kingdom that rules over the town offered them. You become a legend, not for reaching Ultimate, which you eventually did after years of hard work\n"
+                        "and devotion to your mastercraft, but because of the deal that changed uncountable amounts of lives for the better. Even though you've had your struggles, you die happily.\n\n";
+
+  std::string gooddeal1 = "-You return to the town, lucky you. Not getting killed on both the way to the buyer nor on the way back to town alone is worth praise.-\n\n"
+                        "You made it!\n\nThe guard stands by the doors, shedding tears like a kid.\n\nI knew you'd make it! Let's get you safely to our town's bank, did you get a good deal?\n\n"
+                        "You are confident. You've tried your best. You put two bags of gold coins on the table at the bank, telling the bank-teller how your deal went.\n\n"
+                        "But while you're telling him your story, you notice his vision being fixed on the bags.\n\n"
+                        "Is that all you got from it?\n\n"
+                        "No, why would you ever think that, Sir?\nTake a look out the window!\n\n"
+                        "The teller looks out and falls to the floor. Nobody could have ever thought you'd actually pull off a deal like that. The teller is fine, but still in shock after days in the hospital.\n"
+                        "The town's rulers greatly award you. You live happily, under the danger of being overrun by enemies, but not for long. With the money you've made for the town the army has pushed the enemies so far back,\n"
+                        "they couldn't refuse the peace offer the kingdom that rules over the town offered them. You become a legend, not for reaching Ultimate, but because of the deal that changed uncountable amounts of lives for the better." 
+                        "Even though you've had your struggles, concerns, and moment where luck and your mastercraft caused more bad than good, you die happily.\n\n";
+
+  std::string build = "You see, while we do have all these walls protecting us, they wont be able to hold the enemies, it's only a matter of time till they fall and we get captured.\n"
+                      "Before it happened, we've got to do the work on them, set up traps, measures for counter-attacks, set up windows for our archers and cannons, maybe even a catapult...\n"
+                      "Just take a look yourself, you're the master now! We'll entrust you all the decisions and help you out in all ways possible!.\n"
+                      "\n-You get to work. It's not easy, the people helping you out, try their best, but still, they don't do a great job. You teach them, make them excercise for them to be able to actually put in work,\n"
+                      "At some points you're furious at them, sometimes at yourself, you know it's not only their fault they aren't able to help if they don't get coordinated well enough.\n"
+                      "Years pass. Your design finally starts to come into shape. While you should be happy, you hear the talk of the nobles at the town's table for consulation.\n"
+                      "What you hear is terrifying. The knights of the kingdom, that rules over this town, are falling. They can no longer fight the enemies on the battlefield, so,\n"
+                      "The only way for them to make themselves useful is an operation of retreating back to town, to fight back from the fortress you and your comrades built. It's only for your engineering now to decide\n"
+                      "Who is going to win this battle. All you can do is pray and honor your skills, nothing else is going to help now, you did all you could.";
+
+  std::string badbuild = "The knights returned, as expected. There aren't many of them, not as many as you hoped to see at least.\n"
+                         "After two days the last ones of them had returned, the gates get shut by the guards. It is expected for the enemies to take about a week from now to attack your town, all rested and ready to fight.\n"
+                         "They will come at full power, the fortress, which you still need to put finishing touches into, has to hold.\n\n"
+                         "A week passes. The second one too. No sight of the enemies. Everyone wonders, did the enemies suddenly give up?\n"
+                         "You wish. A loud explosion in the middle of the night from the direction of the back gate echoes through town. Then the second one. A few seconds later the sky becomes so bright, it seems like it's daytime.\n"
+                         "But, it's not a natural disaster. It's all fired up arrows, so many, no genius could ever count them in their lifetime.\n"
+                         "You get hit by one, then two, and the third is coming right at you. In your final moments, all you can think of, what let the enemy get so close to your town, everybody was on heavy alert...\n"
+                         "How many days have the enemies been hiding? Was it that you didn't build a watchtower? Was it because you couldn't fit the build of enforced patrol ways around town's walls in the timeframe?\n"
+                         "It doesn't matter now. All you do is blame yourself. The final arrow hits you, you die a failed master, at least for yourself.";
+
+  std::string goodbuild = "The knights returned, as expected. There aren't many of them, not as many as you hoped to see at least.\n"
+                          "After two days the last ones of them had returned, the gates get shut by the guards. It is expected for the enemies to take about a week from now to attack your town, all rested and ready to fight.\n"
+                          "They will come at full power, the fortress, which you still need to put finishing touches into, has to hold.\n\n"
+                          "A week passes. The second one too. No sight of the enemies. Everyone wonders, did the enemies suddenly give up?\n"
+                          "All you can do is finish the building to it's final state. You walk up the almost perfect watch-tower, one any builder could call their life's work, when you hear the guards talking, joking, having fun.\n"
+                          "When you finally climb it up, you ask them: Hey, the hell you so happy for? We've got a battle comi-\n"
+                          "AHH, THERE HE IS!! one of the guards shouts. Everybody turns around to you, a few stand up and come running towards you. You take a defensive stance, did you mess something up? No way."
+                          "They overrun you. But, they don't hit you, what the hell's happening? One of the guards grabs you and drags you to the watch window.\n\n"
+                          "Why don't you take a look over there? He points in the middle of nowhere. What the hell are you suppo-\n"
+                          "You see them. The enemies. You try to count them, there are just too many of them. We've got to warn everyone! There is no way of stopping them!\n\n"
+                          "Why don't you relax a lil, fella? What do they need to survive? Food, and water. Do you see any supply chains coming towards them? We've been looking, and the last one that came, was about 4 days ago.\n"
+                          "Wanna know why? It's all because of you! This watchtower is just amazing! We knew they'd come, so, we just.. stole them on their way to the enemy army! Now they've got no food, they're about to strike\n"
+                          "Or die of lack of supplies! Either way is good for us, but, striking they won't do. They didn't have a clue we ever saw them, so, they never cared about them getting striked instead.\n"
+                          "Their last meals are all poisoned. Every single thing was poisoned. And lemme tell ya, from my experience, nobody goes into battle with a loose belly.\n"
+                          "You're in desbilief as you watch him say all that. It really seems like the enemies army is about to die to such stupidity. Your life's work was used for this.\n\n"
+                          "But, if it works? It sure did.\n\nThree days later, they haven't moved an inch. By themselves, at least. They've all been moved into a big canyon near town, where till the rest of earth's existince," 
+                          "they will have their rest.\n\n It you who put them there. It's you who saved this city. The king knows, now you're the one to decide how everything should be built. Till the end of your days\n"
+                          "you work, and write books, in hope that someone will be able to truly understand them. You die a legend, the one, that finished the greatest war in history without drawing a sword once.";
+  
+  std::string craft = "Thank you so much for willing to help us out. For your safety, we will make sure to send guards with you upon delivering and destributing the crafts, but, you need to understand that no matter the measures taken\n"
+                      "it's still a battlefield. Be careful, and don't push yourself over the limits, put your strength into crafting the weapons and armor and staying well and sound. Once again, thank you. Let me escort you to the smith."
+                      "The smith is old and shabby, you see that the last time it was used was a fairly long time ago. But, it's fairly well equipped. You can make it work. There are many anvils, it seems like you will be able to not only"
+                      "make decent tools yourself, there also is place for more people to work on them. You ask the guard wether there would be people willing to work with you. \n\nWell, yes. We've got folks who would be willing to put it"
+                      "all into craftsmanship under your wing. Some people can't find their place right now, I think it would be good for them too.\n\nOh, and there is Bob...\n\nBob? You ask.\n\nWell, yes, he is the prior toolsmith, but,"
+                      "after losing his two sons in battle, he fell into the depths of drinking and never returned to the blacksmith... I think he needs someone, who will support him on his recovery path, but you don't need to trouble yourself"
+                      "with that.\n\nHim mentioning this guy Bob knowing that he isn't in a good place right now probably means that he is at least somewhat capable.. And he should be, it's his blacksmith afterall, work needs to be done."
+                      "With not only crafting and delivering, but also with the recruits and of course, Bob...";
+  std::string goodcraft = "\n\nYou enter the pub. Everything looks rusty, the lamps shine dump light onto the few people that are there. The barista throws an empty look at you, and goes back to whiping the glasses.\nYou sit"
+                          "down right beside a beat-up older looking guy. He has no hair on the top of his head, it seems like they migrated to his arms and breast. The dirty -wife beater- shirt full of stains shows his skin,\n"
+                          "full of little burns and a burn-inflected scar. While you're thinking what you could order and ask where Bob is, the guy sounding really drunk asks for a whiskey.\n\n"
+                          "It's your 6th shot today Bob, I don't think you should push it like always. - The barista tells the guy. Well, your job of finding him really wasn't all that hard in the end.\n\n"
+                          "I just want my god-damn drink. Tired, he pushes his glass forward, towards the barista. You put your hand over his glass. That's enough, Bob. - You say.\n\n"
+                          "Who the fuck are you? What do you think you're doing, staining my glass with your soft hands? Get the fuck out of here before I put you to sleep. \n\n"
+                          "While you think over wether you should push him further and try to convince him to stop drinking, at least for today or let him be and try some other time, he falls off the chair.\n"
+                          "No normal person would do that. You jump from your chair and run screaming for help. It looks embarassing, weird, you're not the most social person, it crushes you on the inside.\n"
+                          "What if he just fell asleep, what am I even doing? But suddenly, you see medics rush towards you. What happened, what are you causing the whole scene for?\n"
+                          "You're out of breath. You grab for air and push it out as loud as it gets for them to hear you\n\nBob, he fell, I don't think he's okay..\n\n"
+                          "Bob? He does it all the time. Let's go home, Arthur, he'll be back on his feet for the next shot in no time.. Why the fuck are you grabbing me, dude?\n\n"
+                          "I don't think he's okay, he collapsed mid sentence, please, I beg, check up on him..\n\nYou'll have to buy us a drink if he ain't then, for wasting our time.\n\n"
+                          "They go in, and only 2 minutes later they carry Bob out of the pub, rushing, while shouting to each other what they've got to do first, Bob's life is in danger.\n"
+                          "Well, at least it was. It was 2 weeks ago now, Bob is now safe, besides having a fear of alcohol. He still needs little doses of it, to not die because of the lack of it,\n"
+                          "but it's not comparable to what he drank only few weeks before. He is eternally grateful for you saving his life, and with his help, you manage to gather enough\n"
+                          "appretiances who all try their best to help you with crafting enough good gear for the people on the front lines.\n\n It's not believable, but with Bob's reinforcements for the cargo-delivering carts,"
+                          "everyone makes it sound and safe to the frontlines and back, every single time.\nAfter almost a year from the incident, the success of the army is immense, the enemy was pushed back to it's capital and"
+                          "now they're talking peace.\nWhat would've happened, if you hadn't saved Bob back then? Who knows, you try to never think about it. You become the legend. The legend, that went against it's character\n"
+                          "in order to save a random citizen.\n\nWith the help of Bob and your determination, you are honored in every corner of the kingdom for both your character and craftsmanship. You've lived your life happily,"
+                          "and died peacefully.";
+  std::string badcraft = "\n\nYou enter the pub. Everything looks rusty, the lamps shine dump light onto the few people that are there. The barista throws an empty look at you, and goes back to whiping the glasses.\nYou sit"
+                          "down right beside a beat-up older looking guy. He has no hair on the top of his head, it seems like they migrated to his arms and breast. The dirty -wife beater- shirt full of stains shows his skin,\n"
+                          "full of little burns and a burn-inflected scar. While you're thinking what you could order and ask where Bob is, the guy sounding really drunk asks for a whiskey.\n\n"
+                          "It's your 6th shot today Bob, I don't think you should push it like always. - The barista tells the guy. Well, your job of finding him really wasn't all that hard in the end.\n\n"
+                          "I just want my god-damn drink. Tired, he pushes his glass forward, towards the barista. You put your hand over his glass. That's enough, Bob. - You say.\n\n"
+                          "Who the fuck are you? What do you think you're doing, staining my glass with your soft hands? Get the fuck out of here before I put you to sleep. \n\n"
+                          "While you think over wether you should push him further and try to convince him to stop drinking, at least for today or let him be and try some other time, he falls off the chair.\n\n"
+                          "You look towards the barista. He looks back at you.\n\nIt's normal, don't worry about it. Nothing will win over him till, not even death till we run out of alcohol in our pub.\n\n"
+                          "It's weird, but, the barista laughed at his own joke, so, to not put him down with silence, you laugh with him. But, you've already drunk a few shots, and Bob hasn't moved an inch.\n"
+                          "\nAre you sure that's okay, even for him? You ask.\n\nNo, usually he stands up as soon as another glass makes a sound, very weird of him.. Let me check on him..\nBob? Hey, Bob..\n\n"
+                          "He jumps away from him, and takes a minute to gather his words.\n\nHe dead or what? You say with a little smirk.\n\nHe is. I'll get the doctors to get him to the morgue.\n\nGod-damn it."
+                          "You knew you could've checked up on him right away, you could've went and ask for help, at least something.. now the guy's dead, and you won't even be able to ask him\n"
+                          "wether he's okay with you using his blacksmith at the very least. Well, no need to ask anyone anymore, you think to yourself.\n\n"
+                          "But, your fate is sealed. While you've gathered very hard-working men to help you out in the blacksmith, almost all of your cargo gets lost on the way to the battlefield or back.\n"
+                          "You decide to check out what's happening, maybe there are bandints? You gather a few talented knights and adventurers, to escort you with the cargo, but, it doesn't matter a bit.\n"
+                          "It's not bandits. It's the nature itself, in the middle of nowhere, your wheels get broken down because of the overload while going up a hill, you and your men fly off a cliff\n"
+                          "as high as the king's castle. While flying down, you think back at your life. Is it the karma for you not caring about anyone around you? And suddenly, you remember.\n"
+                          "Maybe, it was Bob who would have saved you here. People talked a lot about his abilities as a reinforcer, he was supposed to be very talented at it too..\n\n"
+                          "What a butterfly effect.\n\n"
+                          "That was your last thought before being pinned onto a rock so sharp no sword could compare. You aren't mad, neither are you unsettled.\n\n"
+                          "You die a sorry man. A man who is sorry for his laziness and unworthy of a toolsmith's sense for things no-one else usually notices.\n";
+    srand(time(NULL));
+    int random = rand ();
+
+
+  //greeting and playername
+  std::cout << "Hello, stranger! What's your name, if I may ask?\n";
+  std::cin >> playername;
+
+  //classchoice
+  std::cout << "\nSo " << playername << " is your name, huh... You sound like you're new here, never heard of you before. Who'd you like to be in our town?\n\n" 
+                                     << "Choose one of the following options:\n\n1) Salesman\n2) Builder\n3) Toolsmith\n";
+  std::cin >> playerclass;
+  
+  //converting answer into switch conditions
+  if (playerclass == "1" || playerclass == "Salesman") {
+    forswitch = 1;
+  } else if (playerclass == "2" || playerclass == "Builder") {
+    forswitch = 2;
+  } else if (playerclass == "3" || playerclass == "Toolsmith") {
+    forswitch = 3;
+  /*} else if (playerclass == "4" || playerclass == "Doctor") {
+    forswitch = 4;
+  } else if (playerclass == "5" || playerclass == "Adventurer") {
+    forswitch = 5; */
+  } else {
+    std::cout << "\nSadly, even if you are a good person and a master of your work, we can't let you in. My apologies, but I will have to escort you on your way out.\n";
+    return 0;
+  } 
+
+  //final choices of the player and his future in the town
+  switch (forswitch) {
+
+    case 1:
+    std::cout << intro1 << "Salesman... " << intro2 << "\n";
+    std::cout << second1 << "You see, we have a few treasured relics from the ancient centuries, which we need to sell to keep enough funds for the never-ending war..." 
+                            "\nSadly, all our salesmen have either lost their lives or fled our town, so there's noone but you who could help us out on this job. "
+                            "\nWould you be willing to risk your life for the sake of our people?\n";
+    while (tries < 4) {
+      std::cin >> playerchoice;
+      if (playerchoice == "Yes" || playerchoice == "yes") {
+        std::cout << second2 << rank;
+        while (tries1 < 4) {
+            std::cin >> playerrank;
+            if (playerrank == "Beginner" || playerrank == "beginner") {
+            std::cout << beginner;
+            if (random % 10 == 0) {
+                std::cout << deal << gooddeal;
+                return 0;
+            } else {
+                std::cout << deal << baddeal;
+                return 0;
+            }
+          } else if (playerrank == "Intermidiate" || playerrank == "intermidiate") {
+            std::cout << intermidiate;
+            if (random % 5 == 0) {
+                std::cout << deal << gooddeal;
+                return 0;
+            } else {
+                std::cout << deal << baddeal;
+                return 0;
+            }
+          } else if (playerrank == "Expert" || playerrank == "expert") {
+            std::cout << expert;
+            if (random % 2 == 0) {
+                std::cout << deal << gooddeal;
+                return 0;
+            } else {
+                std::cout << deal << baddeal;
+                return 0;
+            }
+          } else if (playerrank == "Ultimate" || playerrank == "ultimate") {
+            std::cout << ultimate;
+            std::cout << deal << gooddeal1;
+            return 0;
+          } else {
+            std::cout << second4;
+            tries1++;
+          }
+        }
+        if (tries1 > 3) {
+          std::cout << sadend;
+          return 0;
+        }
+      } else if (playerchoice == "No" || playerchoice == "no") {
+        std::cout << second3;
+        return 0;
+      } else {
+        std::cout << second4;
+        tries++;
+      }
+    }
+    std::cout << sadend;
+    return 0;
+    break;
+
+    case 2:
+    std::cout << intro1 << "Builder... " << intro2 << "\n";
+    std::cout << second1 << "\nWe're in war. You know that, right? I mean, only a few kilometers from here, people are fighting for our town. The only thing we can do right now, is either help them,\n"
+                            "or secure the town, so if they fall, the enemies wont be able to invade it. That's why you being a builder is crucial to us. While the folks are ready to help out,\n"
+                            "nobody really has the skill to tell them what to do and how it's done. Our town's builder, despite all our efforts to speak him out of it, decided to go into war\n"
+                            "to avenge his son. Sadly, he never made it home. Would you be willing to help us out? We really have noone but you, who could save us...\n\n";
+     while (tries < 4) {
+      std::cin >> playerchoice;
+      if (playerchoice == "Yes" || playerchoice == "yes") {
+        std::cout << second2 << rank;
+        while (tries1 < 4) {
+            std::cin >> playerrank;
+            if (playerrank == "Beginner" || playerrank == "beginner") {
+            std::cout << beginner;
+            if (random % 10 == 0) {
+                std::cout << build << goodbuild;
+                return 0;
+            } else {
+                std::cout << build << badbuild;
+                return 0;
+            }
+          } else if (playerrank == "Intermidiate" || playerrank == "intermidiate") {
+            std::cout << intermidiate;
+            if (random % 5 == 0) {
+                std::cout << build << goodbuild;
+                return 0;
+            } else {
+                std::cout << build << badbuild;
+                return 0;
+            }
+          } else if (playerrank == "Expert" || playerrank == "expert") {
+            std::cout << expert;
+            if (random % 2 == 0) {
+                std::cout << build << goodbuild;
+                return 0;
+            } else {
+                std::cout << build << badbuild;
+                return 0;
+            }
+          } else if (playerrank == "Ultimate" || playerrank == "ultimate") {
+            std::cout << ultimate;
+            std::cout << build << goodbuild;
+            return 0;
+          } else {
+            std::cout << second4;
+            tries1++;
+          }
+        }
+        if (tries1 > 3) {
+          std::cout << sadend;
+          return 0;
+        }
+      } else if (playerchoice == "No" || playerchoice == "no") {
+        std::cout << second3;
+        return 0;
+      } else {
+        std::cout << second4;
+        tries++;
+      }
+    }
+    std::cout << sadend;
+    return 0;
+    break;
+
+    case 3:
+    std::cout << intro1 << "Toolsmith... " << intro2 << "\n";
+    std::cout << second1 << "Our country is in a really bad shape, and our town, as you might know, is basically the front-line. The problem is that even though all the kingdoms power is concentrated in the \n"
+                            "battlefield about 5 kilometers west of here, our soldiers lack both equipment and support-power. The kingdom has sent out more troops, with better gear out, but, it will take time\n"
+                            "till they get here. Our job is to hold the enemies as far as possible. It means that if you decide to stay here, you will not only need to craft good gear, but also, be ready to deliver\n"
+                            "the created goods to the frontline. For this, you will be greatly rewarded, but, it is very dangerous.. Even though it is really inappropriate, I personally beg of you to help us out.";
+    while (tries < 4) {
+      std::cin >> playerchoice;
+      if (playerchoice == "Yes" || playerchoice == "yes") {
+        std::cout << second2 << rank;
+        while (tries1 < 4) {
+            std::cin >> playerrank;
+            if (playerrank == "Beginner" || playerrank == "beginner") {
+            std::cout << beginner;
+            if (random % 10 == 0) {
+                std::cout << craft << goodcraft;
+                return 0;
+            } else {
+                std::cout << craft << badcraft;
+                return 0;
+            }
+          } else if (playerrank == "Intermidiate" || playerrank == "intermidiate") {
+            std::cout << intermidiate;
+            if (random % 5 == 0) {
+                std::cout << craft << goodcraft;
+                return 0;
+            } else {
+                std::cout << craft << badcraft;
+                return 0;
+            }
+          } else if (playerrank == "Expert" || playerrank == "expert") {
+            std::cout << expert;
+            if (random % 2 == 0) {
+                std::cout << craft << goodcraft;
+                return 0;
+            } else {
+                std::cout << craft << badcraft;
+                return 0;
+            }
+          } else if (playerrank == "Ultimate" || playerrank == "ultimate") {
+            std::cout << ultimate;
+            std::cout << craft << goodcraft;
+            return 0;
+          } else {
+            std::cout << second4;
+            tries1++;
+          }
+        }
+        if (tries1 > 3) {
+          std::cout << sadend;
+          return 0;
+        }
+      } else if (playerchoice == "No" || playerchoice == "no") {
+        std::cout << second3;
+        return 0;
+      } else {
+        std::cout << second4;
+        tries++;
+      }
+    }
+    std::cout << sadend;
+    return 0;
+    break;
+
+    /*case 4:
+    std::cout << intro1 << "Doctor... " << intro2 << "\n";
+    break;
+
+    case 5:
+    std::cout << intro1 << "Adventurer... " << intro2 << "\n";
+    break;*/
+  }
+
+
+}
